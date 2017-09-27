@@ -10,7 +10,9 @@ namespace engine\DI;
 
 
 class DI {
-
+    /**
+     * @var array
+     */
     private $continer = [];
 
     /**
@@ -26,18 +28,20 @@ class DI {
 
     /**
      * @param $key
-     * @return mixed
+     * @return bool
      */
+
     public function get($key){
-        return $this->continer[$key];
+        return $this->has($key);
     }
 
     /**
      * @param $key
-     * @return mixed
+     * @return bool
      */
-    public  function get($key){
-        return $this->has($key);
+    public  function has($key){
+
+        return isset($this->continer[$key]);
     }
 
 }
