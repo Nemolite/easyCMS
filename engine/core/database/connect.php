@@ -7,22 +7,55 @@
  */
 namespace engine\core\database;
 
-use engine\tools;
+use PDO;
+use engine\tools; // debug
 
 class connect {
-     public function test()
-     {
-         define('BIRD', 'Dodo bird');
 
-// Обрабатываем без секций
+    private  $dbconnect;
+
+    public function __construct()
+    {
+        $this->setConnect();
+    }
+
+    /**
+     * @return $this
+     */
+     public function setConnect()
+     {
          $ini_array = parse_ini_file("config.ini");
 
-         $disp = new tools();
-         $disp->show($ini_array);
+         $dsn = 'mysql:dbname='.$ini_array[dbname].';host='.$ini_array[host];
 
+         $user = $ini_array[username];
+         $password = $ini_array[userpass];
 
-// Обрабатываем с секциями
-         $ini_array = parse_ini_file("config.ini", true);
-         $disp->show($ini_array);
+         $this->dbconnect  = new PDO($dsn, $user, $password,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+         return $this;
+
      }
+
+
+    /**
+     * @return array
+     */
+    public function query($sql){
+
+        $line = $this->dbconnect->prepare($sql);
+
+        $line->execute();
+
+        $result = $line->fetchAll(PDO::FETCH_ASSOC);
+
+        if($result=== false){
+            return [];
+        }
+
+        return $result;
+
+    }
+
 }
+

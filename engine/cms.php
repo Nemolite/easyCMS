@@ -25,10 +25,7 @@ class cms {
     public function run()
     {
 
-        $output = new tools();
-        $db = $this->di->get('test');
 
-        $output->show($db);
     }
 
 }
