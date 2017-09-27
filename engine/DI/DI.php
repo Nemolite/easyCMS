@@ -41,7 +41,7 @@ class DI {
      */
     public  function has($key){
 
-        return isset($this->continer[$key]);
+        return isset($this->continer[$key])?$this->continer[$key]: null;
     }
 
 }

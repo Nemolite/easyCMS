@@ -8,11 +8,13 @@
 
 namespace engine;
 
+use engine\tools;
+
 
 class cms {
     private $di;
 
-    public function __constructor($di)
+    public function __construct($di)
     {
         $this->di = $di;
     }
@@ -23,6 +25,10 @@ class cms {
     public function run()
     {
 
+        $output = new tools();
+        $db = $this->di->get('test');
+
+        $output->show($db);
     }
 
 }

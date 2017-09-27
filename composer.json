@@ -2,15 +2,17 @@
     "name": "user/cms",
     "authors": [
         {
-            "name": "as7bzx92dd",
-            "email": "g04032016@mail.ru"
+            "name": "Nemolite",
+            "email": "g25092011@mail.ru"
         }
     ],
     "require": {},
     "autoload": {
       "psr-4": {
-        "Engine\\":"engine",
-        "Engine\\DI\\":"engine/DI"
+        "engine\\":"engine",
+        "engine\\DI\\":"engine/DI",
+        "engine\\core\\database\\":"engine/core/database"
+
 
       }
     }
