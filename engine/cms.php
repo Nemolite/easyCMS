@@ -24,8 +24,9 @@ class cms {
      */
     public function run()
     {
-
-
+        echo "<pre>";
+      print_r($this->di);
+        echo "</pre>";
     }
 
 }

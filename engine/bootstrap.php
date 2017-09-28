@@ -10,25 +10,23 @@ use engine\cms;
 use engine\DI\DI;
 use engine\core\database\connect;
 use engine\tools;
+use engine\service\database;
 
 try {
 
-    $dblook = new connect();
+    $di = new DI();
 
-    $str = "SELECT * FROM users";
+    $services = require __DIR__. '/config/service.php';
 
-    $step2 = $dblook->query($str);
+    // Init servises
+    foreach( $services as $service)
+    {
+        $provider = new $service($di);
+        $provider->init();
+    };
 
-
-
-    // посмотреть
-    $outdb = new tools();
-    $outdb->showobj($step2);
-
-
-
-
-
+    $cms = new cms($di);
+    $cms->run();
 
 }catch (\ErrorException $e){
     echo $e->getMessage();
