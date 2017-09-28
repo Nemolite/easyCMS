@@ -7,5 +7,6 @@
  */
 return [
 
-    engine\service\database\Provader::class
+    engine\service\database\Provader::class,
+    engine\service\Router\Provider::class
 ];

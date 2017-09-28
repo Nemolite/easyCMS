@@ -14,9 +14,12 @@ use engine\tools;
 class cms {
     private $di;
 
+    public $router;
+
     public function __construct($di)
     {
         $this->di = $di;
+        $this->router = $this->di->get('router');
     }
 
     /**
@@ -24,9 +27,12 @@ class cms {
      */
     public function run()
     {
+              $this->router->add('home','/','HomeController:index');
         echo "<pre>";
-      print_r($this->di);
+        print_r($this->di);
         echo "</pre>";
+
+
     }
 
 }
