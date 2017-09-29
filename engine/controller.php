@@ -8,12 +8,19 @@
 
 namespace engine;
 
+use engine\DI\DI;
 
  abstract class controller {
+     /**
+      * @var \engine\DI\DI
+      */
+     protected $di;
 
-     public function __constructor($di)
+     protected $db;
+
+     public function __construct(DI $di)
      {
-
+        $di->di = $di;
      }
 
 }

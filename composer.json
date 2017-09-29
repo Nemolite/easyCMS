@@ -11,7 +11,8 @@
       "psr-4": {
         "engine\\":"engine",
         "engine\\DI\\":"engine/DI",
-        "engine\\core\\database\\":"engine/core/database"
+        "engine\\core\\database\\":"engine/core/database",
+        "cms\\":"cms"
 
 
       }
