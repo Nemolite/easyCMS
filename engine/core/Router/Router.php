@@ -31,14 +31,19 @@ class Router {
 
     public function dispatch($method, $uri)
     {
-
+        return $this->getDispatcher()->dispatch($method, $uri);
     }
 
     public function getDispatcher()
     {
         if($this->dispatcher == null)
         {
+            $this->dispatcher = new URLDispatcher();
 
+            foreach($this->routes as $route)
+            {
+                $this->dispatcher->register($route['method'], $route['pattern'],$route['controller']);
+            }
         }
 
         return $this->dispatcher;
