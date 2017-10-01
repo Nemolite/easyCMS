@@ -20,7 +20,7 @@ use engine\DI\DI;
 
      public function __construct(DI $di)
      {
-        $di->di = $di;
+        $this->di = $di;
      }
 
 }

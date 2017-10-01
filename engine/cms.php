@@ -50,9 +50,9 @@ class cms {
         $objectController = new $controller($this->di);
         $parametres = $routerDispatch->getParametres();
 
-         echo "<pre>";
-         print_r($parametres);
-            echo "</pre>";
+//         echo "<pre>";
+//         print_r($parametres);
+//            echo "</pre>";
 
             call_user_func_array([$objectController,$action],$parametres );
 

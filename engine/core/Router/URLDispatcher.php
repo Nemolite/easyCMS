@@ -55,8 +55,8 @@ class URLDispatcher {
     public function register($method,$pattern,$controller)
 
     {
-        print_r($pattern);
-        echo "<br>";
+//        print_r($pattern);
+//        echo "<br>";
 
         $convert = $this->convertPattern($pattern);
 
@@ -79,14 +79,14 @@ class URLDispatcher {
 
     private function replacePatteren($matches)
     {
-        echo "<pre>";
-        print_r($matches);
-        echo "</pre>";
-
-        echo "<br>";
+//        echo "<pre>";
+//        print_r($matches);
+//        echo "</pre>";
+//
+//        echo "<br>";
         $ret = '(?<'.$matches[1].'>'.strtr($matches[2],$this->patterns).')';
-        print_r($ret);
-        echo "<br>";
+//        print_r($ret);
+//        echo "<br>";
 
         return $ret;
     }
@@ -103,9 +103,6 @@ class URLDispatcher {
 
         return $parameters;
     }
-
-
-
 
     /**
      * @param $method
