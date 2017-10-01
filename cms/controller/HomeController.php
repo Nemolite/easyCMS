@@ -8,23 +8,25 @@
 
 namespace cms\controller;
 
-use engine\controller;
 
-class HomeController extends controller
+class HomeController extends CmsController
 {
-    public function __construct($di)
-    {
-      parent::__construct($di);
-    }
+
 
     public function index()
     {
         echo 'Index Pages';
     }
 
-    public function news()
+    public function news($id)
     {
-        echo 'News Pages';
+       // echo 'News Pages'.$id;
+        echo $id;
+    }
+
+    public function next_index()
+    {
+        echo 'Next Index Pages';
     }
 
 }

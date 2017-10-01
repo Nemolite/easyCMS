@@ -55,9 +55,56 @@ class URLDispatcher {
     public function register($method,$pattern,$controller)
 
     {
+        print_r($pattern);
+        echo "<br>";
+
+        $convert = $this->convertPattern($pattern);
+
+
         $method = strtoupper($method);
-        $this->routes[$method][$pattern] = $controller;
+        //$this->routes[$method][$pattern] = $controller;
+        $this->routes[$method][$convert] = $controller;
     }
+
+    private function convertPattern($pattern)
+    {
+        if(strpos($pattern, '(')=== false)
+        {
+            return $pattern;
+        }
+
+        $ideal= '#\((\w+):(\w+)\)#';
+        return preg_replace_callback($ideal,[$this, 'replacePatteren'],$pattern);
+    }
+
+    private function replacePatteren($matches)
+    {
+        echo "<pre>";
+        print_r($matches);
+        echo "</pre>";
+
+        echo "<br>";
+        $ret = '(?<'.$matches[1].'>'.strtr($matches[2],$this->patterns).')';
+        print_r($ret);
+        echo "<br>";
+
+        return $ret;
+    }
+
+    private function processParam($parameters)
+    {
+        foreach($parameters as $key => $value)
+        {
+            if (is_int($key))
+            {
+                unset($parameters[$key]);
+            }
+        }
+
+        return $parameters;
+    }
+
+
 
 
     /**
@@ -86,7 +133,7 @@ class URLDispatcher {
 
             if(preg_match($pattern,$uri, $parameters))
             {
-                return new DispatchedRoute($controller,$parameters);
+                return new DispatchedRoute($controller,$this->processParam($parameters));
             }
         }
     }

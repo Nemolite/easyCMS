@@ -9,7 +9,7 @@
 namespace cms\controller;
 
 
-class ErrorController {
+class ErrorController extends CmsController {
 
     public function page404 ()
     {

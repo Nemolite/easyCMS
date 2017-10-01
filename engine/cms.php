@@ -32,8 +32,9 @@ class cms {
     {
         try {
         $this->router->add('home','/','HomeController:index');
+        $this->router->add('home_next','/home','HomeController:next_index');
         $this->router->add('news','/news','HomeController:news');
-    //    $this->router->add('product','/user/12','ProductController:index');
+        $this->router->add('new_single','/news/(id:int)','HomeController:news');
 
         $routerDispatch = $this->router->dispatch(Common::getMethod(),Common::getPethUri());
 
@@ -49,7 +50,11 @@ class cms {
         $objectController = new $controller($this->di);
         $parametres = $routerDispatch->getParametres();
 
-        call_user_func_array([$objectController,$action],$parametres );
+         echo "<pre>";
+         print_r($parametres);
+            echo "</pre>";
+
+            call_user_func_array([$objectController,$action],$parametres );
 
         }catch (\Exception $e){
             echo $e->getMessage();
