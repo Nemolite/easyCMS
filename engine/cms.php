@@ -7,6 +7,7 @@
  */
 
 namespace engine;
+use engine\core\Router\DispatchedRoute;
 use engine\Helper\Common;
 //use cms\controller;
 
@@ -29,51 +30,31 @@ class cms {
      */
     public function run()
     {
+        try {
         $this->router->add('home','/','HomeController:index');
         $this->router->add('news','/news','HomeController:news');
-
-
-
-        $this->router->add('product','/user/12','ProductController:index');
-
-
-//        echo "<pre>";
-//        print_r($this->di);
-//        echo "</pre>";
-//
-//
-//
-//        echo "<pre>";
-//        print_r($_SERVER);
-//        echo "</pre>";
-
-//        echo Common::getMethod();
-//
-//        echo Common::getPethUri();
+    //    $this->router->add('product','/user/12','ProductController:index');
 
         $routerDispatch = $this->router->dispatch(Common::getMethod(),Common::getPethUri());
 
+        if ($routerDispatch==null)
+        {
+            $routerDispatch = new DispatchedRoute('ErrorController:page404');
+        }
+
+
+
         list($class,$action) = explode(':',$routerDispatch->getController(),2);
-
-//        echo "<pre>";
-//        print_r($class);
-//        echo "</pre>";
-//
-//        echo "<pre>";
-//        print_r($action);
-//        echo "</pre>";
-
-
         $controller = '\\cms\\controller\\'.$class;
-//        print_r($controller);
+        $objectController = new $controller($this->di);
+        $parametres = $routerDispatch->getParametres();
 
-        $tmp = new $controller($this->di);
+        call_user_func_array([$objectController,$action],$parametres );
 
-        call_user_func_array([$tmp,$action], $routerDispatch->getParametres());
-
-//        echo "<pre>";
-//        print_r($routerDispatch);
-//        echo "</pre>";
+        }catch (\Exception $e){
+            echo $e->getMessage();
+            exit;
+        }
 
     }
 
