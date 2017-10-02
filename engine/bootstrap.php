@@ -9,8 +9,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 use engine\cms;
 use engine\DI\DI;
 use engine\core\database\connect;
-use engine\tools;
 use engine\service\database;
+use engine\service\View;
 
 try {
 
