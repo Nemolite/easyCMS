@@ -31,6 +31,9 @@ class view {
             (sprintf('Temlate "%s" not found in "%s"',$template,$templatePath));
         }
 
+
+
+        $this->thema->setData($vars);
         //extract — Импортирует переменные из массива в текущую таблицу символов
         extract($vars);
 

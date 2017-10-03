@@ -10,13 +10,15 @@ namespace engine\core\Template;
 
 
 class Thema {
-//    const RULES_NAME_FILE = [
-//        'header'=>'header-%s',
-//        'footer'=>'footer-%s',
-//        'sidebar'=>'sidebar-%s',
-//    ];
+    const RULES_NAME_FILE = [
+        'header'=>'header-%s',
+        'footer'=>'footer-%s',
+        'sidebar'=>'sidebar-%s',
+    ];
 
     public $url = '';
+
+    protected $data = [];
 
     public function header($name  = null)
     {
@@ -26,7 +28,8 @@ class Thema {
 
         if($name !== '')
         {
-            $file = sprintf('header-%s',$name);
+           // $file = sprintf('header-%s',$name);
+            $file = sprintf(self::RULES_NAME_FILE['header'],$name);
         }
 
 
@@ -36,15 +39,50 @@ class Thema {
     public function footer($name  = '')
     {
 
+        $name = (string) $name;
+        $file = 'footer';
+
+
+        if($name !== '')
+        {
+            $file = sprintf('footer-%s',$name);
+        }
+
+
+        $this->loadTemplateFile($file);
+
+
+
     }
 
     public function sidebar($name  = '')
     {
 
+        $name = (string) $name;
+        $file = 'sidebar';
+
+
+        if($name !== '')
+        {
+            $file = sprintf('sidebar-%s',$name);
+        }
+
+
+        $this->loadTemplateFile($file);
+
     }
 
     public function block($name = '',$data =[])
     {
+
+        $name = (string) $name;
+
+        if($name !== '')
+        {
+            $this->loadTemplateFile($name,$data);
+        }
+
+
 
     }
 
@@ -62,5 +100,15 @@ class Thema {
                 sprintf('View file $s does not exist',$templateFile)
             );
         }
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 }

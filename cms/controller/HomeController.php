@@ -16,7 +16,7 @@ class HomeController extends CmsController
     public function index()
     {
         $this->di->get('view')->render('index');
-        echo 'Index Pages';
+        //echo 'Index Pages';
     }
 
     public function news($id)
