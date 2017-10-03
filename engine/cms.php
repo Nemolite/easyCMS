@@ -31,7 +31,7 @@ class cms {
     public function run()
     {
         try {
-       require_once __DIR__.'/../cms/Route.php';
+       require_once __DIR__.'/../'. mb_strtolower(ENV) .'/Route.php';
 
         $routerDispatch = $this->router->dispatch(Common::getMethod(),Common::getPethUri());
 
@@ -43,7 +43,7 @@ class cms {
 
 
         list($class,$action) = explode(':',$routerDispatch->getController(),2);
-        $controller = '\\cms\\controller\\'.$class;
+        $controller = '\\'. ENV .'\\controller\\'.$class;
         $objectController = new $controller($this->di);
         $parametres = $routerDispatch->getParametres();
 

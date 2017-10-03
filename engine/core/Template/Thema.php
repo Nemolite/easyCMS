@@ -10,11 +10,11 @@ namespace engine\core\Template;
 
 
 class Thema {
-    const RULES_NAME_FILE = [
-        'header'=>'header-%s',
-        'footer'=>'footer-%s',
-        'sidebar'=>'sidebar-%s',
-    ];
+//    const RULES_NAME_FILE = [
+//        'header'=>'header-%s',
+//        'footer'=>'footer-%s',
+//        'sidebar'=>'sidebar-%s',
+//    ];
 
     public $url = '';
 
@@ -28,8 +28,8 @@ class Thema {
 
         if($name !== '')
         {
-           // $file = sprintf('header-%s',$name);
-            $file = sprintf(self::RULES_NAME_FILE['header'],$name);
+           $file = sprintf('header-%s',$name);
+            //$file = sprintf(self::RULES_NAME_FILE['header'],$name);
         }
 
 

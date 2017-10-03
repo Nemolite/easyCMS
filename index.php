@@ -6,4 +6,6 @@
  * Time: 6:36
  */
 define('ROOT_DIR',__DIR__);
+
+define('ENV','cms');
 require_once 'engine/bootstrap.php';
