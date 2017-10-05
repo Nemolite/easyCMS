@@ -11,9 +11,7 @@ namespace admin\Controller;
 use engine\controller;
 
 class AdminController extends controller {
-    /**
-     * @param \engine\DI\DI $di
-     */
+
     public function __construct($di)
     {
         parent::__construct($di);

@@ -16,11 +16,19 @@ use engine\DI\DI;
       */
      protected $di;
 
+     protected $view;
+
      protected $db;
 
      public function __construct(DI $di)
      {
         $this->di = $di;
+       $this->view  = $this->di->get('view');
+     }
+
+     public function __get($key)
+     {
+         return $this->di->get($key);
      }
 
 }

@@ -22,7 +22,7 @@ class view {
 
     public function render($template, $vars = [])
     {
-        $templatePath = ROOT_DIR.'/content/themes/default/'.$template.'.php';
+        $templatePath = $this->getTempLatePath($template, ENV);
 
         if (!is_file( $templatePath))
         {
@@ -57,6 +57,19 @@ class view {
         // данные будут выведены
         echo ob_get_clean();
 
+    }
+
+    private function getTempLatePath($template,$env = null)
+    {
+        switch ($env)
+        {
+            case 'admin':
+                return ROOT_DIR. '/View/'.$template.'.php';
+            case 'cms':
+                return ROOT_DIR. '/content/themes/default/'.$template.'.php';
+            default:
+                return ROOT_DIR. '/View/'.$template.'.php';
+        }
     }
 
 }

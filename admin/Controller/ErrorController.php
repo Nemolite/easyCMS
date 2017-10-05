@@ -8,7 +8,7 @@
 
 namespace admin\Controller;
 
-use admin\Controller\AdminController;
+//use admin\Controller\AdminController;
 
 
 class ErrorController extends AdminController {
