@@ -17,6 +17,9 @@ class Provider extends AbstractProvader{
     public $serviceName = 'router';
 
 
+    /**
+     *
+     */
     public function init()
     {
         $router = new Router('cms/');

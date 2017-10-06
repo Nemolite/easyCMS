@@ -18,12 +18,15 @@ use engine\DI\DI;
 
      protected $view;
 
+     protected $config;
+
      protected $db;
 
      public function __construct(DI $di)
      {
-        $this->di = $di;
+       $this->di = $di;
        $this->view  = $this->di->get('view');
+         $this->config  = $this->di->get('config');
      }
 
      public function __get($key)

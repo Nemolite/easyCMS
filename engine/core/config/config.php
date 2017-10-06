@@ -19,10 +19,11 @@ class config {
 
     public  static function file($group)
     {
-$path = $_REQUEST['DOCUMENT_ROOT']. '/'.mb_strtolower(ENV). '/Config/'.$group. '.php';
+           $path = $_SERVER['DOCUMENT_ROOT']. '/'.mb_strtolower(ENV). '/config/'.$group. '.php';
 
         if (file_exists($path))
         {
+
             $items = require_once $path;
 
             if(is_array($items))
