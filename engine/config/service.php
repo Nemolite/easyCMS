@@ -10,5 +10,6 @@ return [
     engine\service\database\Provader::class,
     engine\service\Router\Provider::class,
     engine\service\View\Provider::class,
-    engine\service\config\Provider::class
+    engine\service\config\Provider::class,
+    engine\service\Request\Provider::class
 ];

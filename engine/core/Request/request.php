@@ -9,7 +9,7 @@
 namespace engine\core\Request;
 
 
-class request {
+class Request {
     public $get = [];
 
     public $post = [];
