@@ -21,6 +21,8 @@ class config {
     {
            $path = $_SERVER['DOCUMENT_ROOT']. '/'.mb_strtolower(ENV). '/config/'.$group. '.php';
 
+        echo $path;
+
         if (file_exists($path))
         {
 
