@@ -13,6 +13,7 @@ namespace admin\Controller;
 class DashboardController extends AdminController {
     public function index()
     {
+       // print_r($this->get('config'));
         $this->view->render('dashboard');
     }
 }

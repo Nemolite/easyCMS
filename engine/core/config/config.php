@@ -14,6 +14,7 @@ class config {
     {
         $groupItems = static::file($group);
 
+
         return isset($groupItems[$key])? $groupItems[$key] : null;
     }
 
@@ -21,7 +22,10 @@ class config {
     {
            $path = $_SERVER['DOCUMENT_ROOT']. '/'.mb_strtolower(ENV). '/config/'.$group. '.php';
 
-        echo $path;
+       // echo $path;
+       // echo "<br>";
+       // echo $_SERVER['DOCUMENT_ROOT'];
+       // echo "<br>";
 
         if (file_exists($path))
         {

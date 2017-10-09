@@ -26,7 +26,7 @@ use engine\DI\DI;
      {
        $this->di = $di;
        $this->view  = $this->di->get('view');
-         $this->config  = $this->di->get('config');
+       $this->config  = $this->di->get('config');
      }
 
      public function __get($key)
