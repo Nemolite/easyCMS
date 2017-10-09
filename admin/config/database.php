@@ -8,5 +8,5 @@
 return [
     'host' => 'localhost',
     'username' => 'root'
-
+// настройки баз данных в одельном файле
 ];

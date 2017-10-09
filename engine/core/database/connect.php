@@ -10,6 +10,8 @@ namespace engine\core\database;
 use PDO;
 use engine\tools; // debug
 
+use engine\core\config\config;
+
 class connect {
 
     private  $dbconnect;
@@ -22,6 +24,8 @@ class connect {
     /**
      * @return $this
      */
+
+
      public function setConnect()
      {
          $ini_array = parse_ini_file("config.ini");
