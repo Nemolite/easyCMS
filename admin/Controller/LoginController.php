@@ -21,11 +21,21 @@ class LoginController extends controller {
         parent::__construct($di);
 
         $this->auth = new Auth();
+
+        if ($this->auth->hashUser()!==null)
+        {
+            $this->auth->authorize($this->auth->hashUser());
+        }
+
+        if ($this->auth->autorized())
+        {
+            header('Location: /admin/',true, 301);
+        }
     }
 
     public function form()
     {
-       print_r($_COOKIE);
+    //   print_r($_COOKIE);
        $this->view->render('login');
     }
 
@@ -34,9 +44,9 @@ class LoginController extends controller {
 
         $params = $this->request->post;
 
-        echo "<pre>";
-        print_r($params);
-        echo "</pre>";
+     //   echo "<pre>";
+     //   print_r($params);
+     //   echo "</pre>";
 
         $query = $this->db-> query('
         SELECT *
@@ -46,11 +56,40 @@ class LoginController extends controller {
          LIMIT 1
         ');
 
-        echo "<pre>";
-        print_r($query);
-        echo "<pre>";
+        if(!empty($query))
+        {
+            $user = $query[0];
 
-        exit;
+            //   echo "<pre>";
+            //   print_r($user);
+            //   echo "</pre>";
+
+            if ($user['role']=='admin')
+            {
+                $hash = md5($user['id'].$user['email'].$user['password'].$this->auth->salt());
+
+                $this->db->execute('
+                    UPDATE user
+                    SET hash = "'.$hash.'"
+                    WHERE id='.$user['id'].'
+
+                ');
+
+                $this->auth->authorize($hash);
+
+                header('Location: /admin/login/',true, 301);
+                exit;
+            }
+
+        }
+
+        // return 1;
+
+       // echo "<pre>";
+       // print_r($query);
+       // echo "<pre>";
+
+       // exit;
         //$this->auth->authorize('assa');
 
        // print_r($params);

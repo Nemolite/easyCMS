@@ -51,7 +51,7 @@ class connect {
 
         $line->execute($value);
 
-        $result = $line->fetchAll(PDO::FETCH_OBJ);
+        $result = $line->fetchAll(PDO::FETCH_ASSOC);
 
         if($result=== false){
             return [];
@@ -59,6 +59,12 @@ class connect {
 
         return $result;
 
+    }
+
+    public function execute($sql, $values = [])
+    {
+        $sth = $this->dbconnect->prepare($sql);
+        return $sth->execute($values);
     }
 
 }

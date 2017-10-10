@@ -26,11 +26,19 @@ class AdminController extends controller {
 
         $this->checkAuthorization();
 
+        if (isset($this->request->get['logout']))
+        {
+            $this->auth->unAuthorize();
+        }
 
     }
 
     public  function checkAuthorization()
     {
+        if ($this->auth->hashUser()!==null)
+        {
+            $this->auth->authorize($this->auth->hashUser());
+        }
 
         if (!$this->auth->autorized()) //and $this->request->server['REQUEST_URI']!=='/admin/login/
         {

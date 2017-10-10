@@ -12,16 +12,16 @@ use engine\Helper\Cookie;
 class Auth implements AuthInterface {
 
     protected  $autorized =false;
-    protected $user;
+    protected $hash_user;
 
     public function autorized()
         {
             return $this->autorized;
         }
 
-    public function user()
+    public function hashUser()
     {
-        return $this->user;
+        return Cookie::get('auth_user');
     }
 
     public function authorize($user)
@@ -30,7 +30,7 @@ class Auth implements AuthInterface {
         Cookie::set('auth_user',$user);
 
         $this->autorized = true;
-        $this->user = $user;
+        $this->hash_user = $user;
     }
 
     public function unAuthorize()
@@ -39,7 +39,7 @@ class Auth implements AuthInterface {
         Cookie::delete('auth_user');
 
         $this->autorized = false;
-        $this->user = null;
+        $this->hash_user = null;
 
 
     }
