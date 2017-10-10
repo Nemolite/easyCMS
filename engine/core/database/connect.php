@@ -45,13 +45,13 @@ class connect {
     /**
      * @return array
      */
-    public function query($sql){
+    public function query($sql,$value=[]){
 
         $line = $this->dbconnect->prepare($sql);
 
-        $line->execute();
+        $line->execute($value);
 
-        $result = $line->fetchAll(PDO::FETCH_ASSOC);
+        $result = $line->fetchAll(PDO::FETCH_OBJ);
 
         if($result=== false){
             return [];

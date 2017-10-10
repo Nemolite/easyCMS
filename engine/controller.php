@@ -30,6 +30,7 @@ use engine\DI\DI;
        $this->view  = $this->di->get('view');
        $this->config  = $this->di->get('config');
        $this->request  = $this->di->get('request');
+       $this->db  = $this->di->get('db');
      }
 
      public function __get($key)
