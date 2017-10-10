@@ -9,12 +9,36 @@
 namespace admin\Controller;
 
 use engine\controller;
+use engine\core\Auth\Auth;
 
 class AdminController extends controller {
+
+    //
+    protected $auth;
+
+
 
     public function __construct($di)
     {
         parent::__construct($di);
+
+        $this->auth = new Auth();
+
+        $this->checkAuthorization();
+
+
+    }
+
+    public  function checkAuthorization()
+    {
+
+        if (!$this->auth->autorized()) //and $this->request->server['REQUEST_URI']!=='/admin/login/
+        {
+            //redirect
+            header('Location: /admin/login/',true,301);
+            exit;
+        }
+
     }
 
 

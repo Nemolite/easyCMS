@@ -9,9 +9,7 @@
 namespace engine\core\Auth;
 use engine\Helper\Cookie;
 
-
-
-class Auth extends AuthInterface {
+class Auth implements AuthInterface {
 
     protected  $autorized =false;
     protected $user;

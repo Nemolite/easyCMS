@@ -7,14 +7,15 @@
  */
 
 namespace engine;
+use admin\Controller\LoginController;
 use engine\core\Router\DispatchedRoute;
 use engine\Helper\Common;
-//use cms\controller;
 
+use cms\controller\AdminController;
 use engine\tools;
 
 
-class cms {
+class cms  {
     private $di;
 
     public $router;
@@ -44,12 +45,20 @@ class cms {
 
         list($class,$action) = explode(':',$routerDispatch->getController(),2);
         $controller = '\\'. ENV .'\\controller\\'.$class;
+
+         //   echo "<pre>";
+         //   print_r($controller);
+         //   echo "</pre>";
+
         $objectController = new $controller($this->di);
+           // var_dump($objectController);
+
+
         $parametres = $routerDispatch->getParametres();
 
-//         echo "<pre>";
-//         print_r($parametres);
-//            echo "</pre>";
+         //echo "<pre>";
+         //print_r($parametres);
+         //echo "</pre>";
 
             call_user_func_array([$objectController,$action],$parametres );
 

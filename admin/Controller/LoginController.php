@@ -8,12 +8,26 @@
 
 namespace admin\Controller;
 
-class LoginController extends AdminController {
+use engine\controller;
+use engine\DI\DI;
+
+class LoginController extends controller {
+
+    public function  __construct(DI $di)
+    {
+        parent::__construct($di);
+    }
 
     public function form()
     {
-       print_r($this->request->server['HTTP_HOST']);
+
        $this->view->render('login');
     }
 
+    public function authAdmin()
+    {
+        $params = $this->request->post;
+
+        print_r($params);
+    }
 }
