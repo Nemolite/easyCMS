@@ -44,9 +44,6 @@ class LoginController extends controller {
 
         $params = $this->request->post;
 
-     //   echo "<pre>";
-     //   print_r($params);
-     //   echo "</pre>";
 
         $query = $this->db-> query('
         SELECT *

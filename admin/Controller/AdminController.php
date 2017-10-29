@@ -26,7 +26,7 @@ class AdminController extends controller {
 
         $this->checkAuthorization();
 
-        if (isset($this->request->get['logout']))
+        if ($this->request->get['logout'] == 1)
         {
             $this->auth->unAuthorize();
         }
