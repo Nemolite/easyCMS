@@ -25,6 +25,9 @@ class Cookie {
         return null;
     }
 
+    /**
+     * @param $key
+     */
     public static function delete($key)
     {
         if ( isset($_COOKIE[$key]) )

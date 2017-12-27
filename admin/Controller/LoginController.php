@@ -35,7 +35,7 @@ class LoginController extends controller {
 
     public function form()
     {
-    //   print_r($_COOKIE);
+  
        $this->view->render('login');
     }
 
@@ -57,9 +57,6 @@ class LoginController extends controller {
         {
             $user = $query[0];
 
-            //   echo "<pre>";
-            //   print_r($user);
-            //   echo "</pre>";
 
             if ($user['role']=='admin')
             {
@@ -80,19 +77,6 @@ class LoginController extends controller {
 
         }
 
-        // return 1;
 
-       // echo "<pre>";
-       // print_r($query);
-       // echo "<pre>";
-
-       // exit;
-        //$this->auth->authorize('assa');
-
-       // print_r($params);
-
-        // WHERE email =' . $params['email'] . '
-        // AND password = ' . md5($params['password']) . '
-        // LIMIT 1
     }
 }

@@ -13,7 +13,9 @@ use engine\core\Auth\Auth;
 
 class AdminController extends controller {
 
-    //
+    /**
+     * @var Auth
+     */
     protected $auth;
 
 

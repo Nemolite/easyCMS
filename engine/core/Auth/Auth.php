@@ -44,10 +44,16 @@ class Auth implements AuthInterface {
 
     }
 
+    /**
+     * Generaters a new random password salt
+     * @return string
+     */
+
     public static function  salt()
     {
         return (string) rand(10000000,99999999);
     }
+
 
     public static function encryptPassword($password, $salt ='')
     {
